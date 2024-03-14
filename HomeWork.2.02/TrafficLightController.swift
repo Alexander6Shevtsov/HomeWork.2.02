@@ -8,6 +8,11 @@
 import UIKit
 
 final class TrafficLightController: UIViewController {
+    
+    @IBOutlet var redLight UIView!
+    @IBOutlet var yellowLight UIView!
+    @IBOutlet var greenLight UIView!
+    @IBOutlet var startButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
