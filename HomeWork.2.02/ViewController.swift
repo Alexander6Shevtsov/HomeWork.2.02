@@ -7,37 +7,37 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-   
+final class ViewController: UIViewController {
+    
     @IBOutlet var redLight: UIView!
     @IBOutlet var yellowLight: UIView!
     @IBOutlet var greenLight: UIView!
-   
-    @IBOutlet weak var startButton: UIButton!
     
-    enum TrafficLightState {
-        case red, yellow, green
-    }
+    @IBOutlet var startButton: UIButton!
+    
+    
     
     var currentLightState: TrafficLightState = .red
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        redLight.layer.cornerRadius = 50
+        yellowLight.layer.cornerRadius = 50
+        greenLight.layer.cornerRadius = 50
         startButton.layer.cornerRadius = 10
         
-        redLight.alpha = 1.0
+        redLight.alpha = 0.3
         yellowLight.alpha = 0.3
         greenLight.alpha = 0.3
-        
     }
     
+// если убрать параметры метода (_ sender: UIButton) как в уроке, выдаёт Fatal Error ;(
     @IBAction func startButtonTapped(_ sender: UIButton) {
         if startButton.currentTitle == "START" {
             startButton.setTitle("NEXT", for: .normal)
         }
         
-        // Переключение состояния светофора
         switch currentLightState {
         case .red:
             redLight.alpha = 1.0
@@ -58,4 +58,6 @@ class ViewController: UIViewController {
     }
 }
 
-
+enum TrafficLightState {
+    case red, yellow, green
+}
