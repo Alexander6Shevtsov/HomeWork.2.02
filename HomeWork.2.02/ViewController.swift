@@ -8,34 +8,30 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
-    // Объявляем IBOutlet'ы для светофорных сигналов и кнопки
-    @IBOutlet weak var redLight: UIView!
-    @IBOutlet weak var yellowLight: UIView!
-    @IBOutlet weak var greenLight: UIView!
+   
+    @IBOutlet var redLight: UIView!
+    @IBOutlet var yellowLight: UIView!
+    @IBOutlet var greenLight: UIView!
+   
     @IBOutlet weak var startButton: UIButton!
     
-    // Перечисление для состояний светофора
     enum TrafficLightState {
         case red, yellow, green
     }
     
-    // Текущее состояние светофора
     var currentLightState: TrafficLightState = .red
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Настройка начального состояния светофора (выключенные сигналы)
-        redLight.alpha = 0.3
+        startButton.layer.cornerRadius = 10
+        
+        redLight.alpha = 1.0
         yellowLight.alpha = 0.3
         greenLight.alpha = 0.3
         
-        // Скругление углов у кнопки
-        startButton.layer.cornerRadius = 10
     }
     
-    // Обработчик нажатия на кнопку "START" и переключение состояний светофора
     @IBAction func startButtonTapped(_ sender: UIButton) {
         if startButton.currentTitle == "START" {
             startButton.setTitle("NEXT", for: .normal)
