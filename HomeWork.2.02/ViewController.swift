@@ -15,9 +15,12 @@ final class ViewController: UIViewController {
     
     @IBOutlet var startButton: UIButton!
     
-    
-    
     var currentLightState: TrafficLightState = .red
+    
+    // не знаю куда enum засунуть, оставлю пока здесь :)
+    enum TrafficLightState {
+        case red, yellow, green
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +35,7 @@ final class ViewController: UIViewController {
         greenLight.alpha = 0.3
     }
     
-// если убрать параметры метода (_ sender: UIButton) как в уроке, выдаёт Fatal Error ;(
+    // если убрать параметры (_ sender: UIButton) как в уроке, выдаёт Fatal
     @IBAction func startButtonTapped(_ sender: UIButton) {
         if startButton.currentTitle == "START" {
             startButton.setTitle("NEXT", for: .normal)
@@ -56,8 +59,4 @@ final class ViewController: UIViewController {
             currentLightState = .red
         }
     }
-}
-
-enum TrafficLightState {
-    case red, yellow, green
 }
