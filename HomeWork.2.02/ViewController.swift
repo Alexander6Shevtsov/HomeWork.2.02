@@ -15,7 +15,7 @@ final class ViewController: UIViewController {
     
     @IBOutlet var startButton: UIButton!
     
-    var currentLightState: TrafficLightState = .red
+   private var currentLightState: TrafficLightState = .red
     
     // не знаю куда enum засунуть, оставлю пока здесь :)
     enum TrafficLightState {
