@@ -17,11 +17,6 @@ final class ViewController: UIViewController {
     
    private var currentLightState: TrafficLightState = .red
     
-    // не знаю куда enum засунуть, оставлю пока здесь :)
-    enum TrafficLightState {
-        case red, yellow, green
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,12 +29,11 @@ final class ViewController: UIViewController {
         yellowLight.alpha = 0.3
         greenLight.alpha = 0.3
     }
-    
-    // если убрать параметры (_ sender: UIButton) как в уроке, выдаёт Fatal
-    @IBAction func startButtonTapped(_ sender: UIButton) {
+
+    @IBAction func startButtonTapped() {
         if startButton.currentTitle == "START" {
             startButton.setTitle("NEXT", for: .normal)
-        }
+    }
         
         switch currentLightState {
         case .red:
@@ -58,5 +52,13 @@ final class ViewController: UIViewController {
             greenLight.alpha = 1.0
             currentLightState = .red
         }
+    }
+}
+
+// MARK: - CurrentLight     расширения нужно подписывать!
+// расширение позволяет расширять функционал любого типа данных не имея доступа
+extension ViewController { // расширяем наш класс, add приватный enum
+    private enum TrafficLightState { // состояние светофора
+        case red, yellow, green
     }
 }
